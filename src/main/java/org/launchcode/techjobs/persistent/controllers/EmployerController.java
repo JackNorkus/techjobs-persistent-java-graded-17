@@ -35,11 +35,10 @@ public class EmployerController {
     public String processAddEmployerForm(@ModelAttribute @Valid Employer newEmployer,
                                     Errors errors, Model model) {
 
-        model.addAttribute("employers", employerRepository.save(newEmployer));
-
         if (errors.hasErrors()) {
             return "employers/add";
         }
+        model.addAttribute("employers", employerRepository.save(newEmployer));
 
         return "redirect:";
     }
